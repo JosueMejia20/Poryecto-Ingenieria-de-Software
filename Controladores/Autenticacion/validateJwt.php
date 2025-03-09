@@ -27,7 +27,7 @@ class validate {
         $tokenParts = explode(".", $jwt);
 
         if (count($tokenParts) !== 3) {
-            return false; 
+            return false;
         }
 
         list($header, $payload, $signature) = $tokenParts;
@@ -38,12 +38,12 @@ class validate {
 
         
         if ($decodedHeader['alg'] !== 'HS256') {
-            return false; // Algoritmo no soportado
+            return false;
         }
 
         
         if (isset($decodedPayload['exp']) && time() > $decodedPayload['exp']) {
-            return false; // Token expirado
+            return false;
         }
 
         
@@ -51,10 +51,10 @@ class validate {
 
         
         if ($expectedSignature !== $signature) {
-            return false; 
+            return false;
         }
 
-        return $decodedPayload; 
+        return $decodedPayload;
     }
 }
 ?>
