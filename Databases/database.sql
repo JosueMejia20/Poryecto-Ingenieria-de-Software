@@ -1,4 +1,3 @@
-CREATE DATABASE BD_UNI;
 USE BD_UNI;
 
 -- Tabla Usuario
@@ -11,19 +10,27 @@ CREATE TABLE Usuario (
     Rol ENUM('Aspirante', 'Estudiante', 'Docente', 'Administrador') NOT NULL
 );
 
--- Tabla Admisión
-CREATE TABLE Admision (
-    AdmisionID INT AUTO_INCREMENT PRIMARY KEY,
-    UsuarioID INT UNIQUE,
-    FechaSolicitud DATE NOT NULL,
-    Estado ENUM('Pendiente', 'Aprobada', 'Rechazada') NOT NULL,
-    CarreraID INT NOT NULL,
-    CarreraAlternativaID INT,
-    CertificadoSecundaria TEXT,
-    Observaciones TEXT,
-    FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
-    FOREIGN KEY (CarreraID) REFERENCES Carrera(CarreraID),
-    FOREIGN KEY (CarreraAlternativaID) REFERENCES Carrera(CarreraID)
+-- Tabla Centro Regional
+CREATE TABLE CentroRegional (
+    CentroRegionalID INT AUTO_INCREMENT PRIMARY KEY,
+    NombreCentro VARCHAR(255) NOT NULL,
+    Ubicacion TEXT NOT NULL,
+    Telefono VARCHAR(20),
+    Correo VARCHAR(255)
+);
+
+-- Tabla Categoria Libro
+CREATE TABLE CategoriaLibro (
+    CategoriaID INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL
+);
+
+-- Tabla Facultad
+CREATE TABLE Facultad (
+    FacultadID INT AUTO_INCREMENT PRIMARY KEY,
+    NombreFacultad VARCHAR(255) NOT NULL,
+    Decano INT,
+    FOREIGN KEY (Decano) REFERENCES Usuario(UsuarioID)
 );
 
 -- Tabla Carrera
@@ -36,23 +43,6 @@ CREATE TABLE Carrera (
     CentroRegionalID INT NOT NULL,
     FOREIGN KEY (FacultadID) REFERENCES Facultad(FacultadID),
     FOREIGN KEY (CentroRegionalID) REFERENCES CentroRegional(CentroRegionalID)
-);
-
--- Tabla Facultad
-CREATE TABLE Facultad (
-    FacultadID INT AUTO_INCREMENT PRIMARY KEY,
-    NombreFacultad VARCHAR(255) NOT NULL,
-    Decano INT,
-    FOREIGN KEY (Decano) REFERENCES Usuario(UsuarioID)
-);
-
--- Tabla Centro Regional
-CREATE TABLE CentroRegional (
-    CentroRegionalID INT AUTO_INCREMENT PRIMARY KEY,
-    NombreCentro VARCHAR(255) NOT NULL,
-    Ubicacion TEXT NOT NULL,
-    Telefono VARCHAR(20),
-    Correo VARCHAR(255)
 );
 
 -- Tabla Estudiante
@@ -86,6 +76,23 @@ CREATE TABLE Coordinador (
     FOREIGN KEY (DocenteID) REFERENCES Docente(DocenteID)
 );
 
+
+-- Tabla Admisión
+CREATE TABLE Admision (
+    AdmisionID INT AUTO_INCREMENT PRIMARY KEY,
+    UsuarioID INT UNIQUE,
+    FechaSolicitud DATE NOT NULL,
+    Estado ENUM('Pendiente', 'Aprobada', 'Rechazada') NOT NULL,
+    CarreraID INT NOT NULL,
+    CarreraAlternativaID INT,
+    CertificadoSecundaria TEXT,
+    Observaciones TEXT,
+    FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
+    FOREIGN KEY (CarreraID) REFERENCES Carrera(CarreraID),
+    FOREIGN KEY (CarreraAlternativaID) REFERENCES Carrera(CarreraID)
+);
+
+
 -- Tabla Biblioteca
 CREATE TABLE Biblioteca (
     LibroID INT AUTO_INCREMENT PRIMARY KEY,
@@ -96,11 +103,6 @@ CREATE TABLE Biblioteca (
     FOREIGN KEY (CategoriaLibroID) REFERENCES CategoriaLibro(CategoriaID)
 );
 
--- Tabla Categoria Libro
-CREATE TABLE CategoriaLibro (
-    CategoriaID INT AUTO_INCREMENT PRIMARY KEY,
-    Nombre VARCHAR(100) NOT NULL
-);
 
 -- Tabla Matrícula
 CREATE TABLE Matricula (

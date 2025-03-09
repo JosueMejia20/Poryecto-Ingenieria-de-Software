@@ -4,13 +4,13 @@
     include 'createJwt.php';
     include 'validateJwt.php';
 
-    /** Manejador de token jwt
+/** Manejador de token jwt
      *
      * @author Gerardo Antonio Rodriguez Contreras .
      * @version 1.0.0.
      *
      */
-    class helper{
+class helper{
 
     /** Llama a la funcion create del arhivo createJwt.php para generar un token de autenticacion.
      *
@@ -23,7 +23,7 @@
      * @version 1.0.0.
      *
      */
-    function create($idUser,$userName ,$passWord ){
+    public static function create($idUser,$userName ,$passWord ){
         
         $jwt_create = new create();
         $payload = [
@@ -49,7 +49,7 @@
      * @version 1.0.0.
      *
      */
-    function validate($jwt, $secretKey){
+    public static function validate($jwt, $secretKey){
         
     
         $jwt_validate = new validate();
@@ -67,5 +67,9 @@
     }
 
 }
+
+$helper = new helper();
+
+return $helper;
 
  ?>
