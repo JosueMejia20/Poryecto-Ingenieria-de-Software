@@ -1,0 +1,187 @@
+/*Estilo login*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url(https://tiempo.hn/wp-content/uploads/2024/02/Diseno-sin-titulo-2024-02-22T140928.765-1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(0.5rem);
+}
+
+.encabezado{
+    display: flex;
+}
+
+.logo{
+    margin-left: 15px;
+    height: 150px;
+}
+
+.texto_encabezado h1{
+    margin-left: 25px;
+    font-size: 50px;
+} 
+
+
+.container-form{
+    display: flex;
+    border-radius: 30px;
+    box-shadow: 0 5px 7px rgb(0, 0, 0, -1);
+    height: 500px;
+    max-width: 900px;
+    transition: all is ease;
+    margin: 25px;
+}
+
+.informacion{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #0b4c92;
+    color: white;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 2px;
+}
+
+.info-childs{
+    width: 100%;
+    padding: 0 30px;
+}
+
+.info-childs h2{
+    font-size: 2.5rem;
+    color: white;
+}
+
+.info-childs p{
+    margin: 15px;
+    color: white;
+}
+
+.info-childs input{
+    background-color: transparent;
+    outline: none;
+    border: solid 2px rgb(192, 147, 0);
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.info-childs input:hover{
+    background-color:rgb(192, 147, 0) ;
+    border: none;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, -1);
+    
+}
+
+.form-informacion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.form-informacion-child{
+    padding: 0 30px;
+}
+
+.form-informacion-child h2{
+    color: black;
+    font-size: 2rem;
+}
+
+.form-informacion-child p{
+    color: #555;
+}
+
+.form{
+    margin: 30px 0 0 0;
+}
+
+.form label{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    padding: 0 10px;
+    background-color: #d2d1d1;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, -1);
+}
+
+.form label input{
+    width: 100%;
+    padding: 10px;
+    background-color: #d2d1d1;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: #333;
+}
+
+.form label i{
+    color: #a7a7a7;
+}
+
+.form input[type="submit"]{
+    background-color:rgb(192, 147, 0) ;
+    color: #ffff;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgb(0, 0, 0, -1);
+}
+
+.form inputt[type="submit"]:hover{
+    background-color: transparent;
+}
+
+/*Responsiv*/
+@media screen and (max-width:750px){
+    html{
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:580px){
+    html{
+        font-size: 9px;
+    }
+
+    .container-form{
+        height: auto;
+        flex-direction: column;
+    }
+
+    .informacion{
+        width: 100%;
+        padding: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-informacion{
+        width: 100%;
+        padding: 20px;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 0px;
+    }
+}
