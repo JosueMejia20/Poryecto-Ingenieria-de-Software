@@ -7,7 +7,7 @@ CREATE TABLE Usuario (
     UsuarioID INT AUTO_INCREMENT PRIMARY KEY,
     NombreCompleto VARCHAR(50) NOT NULL,
     Identidad VARCHAR(20) UNIQUE NOT NULL,
-    CorreoPersonal VARCHAR(255) UNIQUE NOT NULL,
+    Correo VARCHAR(255) UNIQUE NOT NULL,
     Pass VARCHAR(50) NOT NULL,
     Telefono VARCHAR(20)
 );
