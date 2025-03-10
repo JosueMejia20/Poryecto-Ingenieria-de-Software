@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#admisiones">Admisiones</a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="login.php">Acceder</a>
+                    </li>
                 </ul>
             </div>
         </div>

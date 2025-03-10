@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Poryecto-Ingenieria-de-Software/public/css/style_login.css">
+    <link rel="stylesheet" href="/Poryecto-Ingenieria-de-Software/Modelos/public/css/style_login.css">
 </head>
 <body>
     <div class="container-form" id="Cuerpo_login">
@@ -15,7 +15,7 @@
                 <p>Recuerda que antes debe de completar el proceso
                     de admision 
                 </p>
-                <a href="incio.html">
+                <a href="landing.php">
                     <input type="button" value="Regresar">
                 </a>
             </div>
