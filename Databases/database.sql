@@ -7,8 +7,9 @@ CREATE TABLE Usuario (
     UsuarioID INT AUTO_INCREMENT PRIMARY KEY,
     NombreCompleto VARCHAR(50) NOT NULL,
     Identidad VARCHAR(20) UNIQUE NOT NULL,
-    Correo VARCHAR(255) UNIQUE NOT NULL,
+    CorreoPersonal VARCHAR(255) UNIQUE NOT NULL,
     Pass VARCHAR(50) NOT NULL,
+    NumeroCuenta VARCHAR(50) UNIQUE NOT NULL,
     Telefono VARCHAR(20)
 );
 
@@ -63,7 +64,6 @@ CREATE TABLE Estudiante (
     CarreraID INT NOT NULL,
     CentroRegionalID INT NOT NULL,
     CorreoInstitucional VARCHAR(255) UNIQUE NOT NULL,
-    NumeroCuenta VARCHAR(50) UNIQUE NOT NULL,
     FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
     FOREIGN KEY (CarreraID) REFERENCES Carrera(CarreraID),
     FOREIGN KEY (CentroRegionalID) REFERENCES CentroRegional(CentroRegionalID)
@@ -73,7 +73,6 @@ CREATE TABLE Estudiante (
 CREATE TABLE Docente (
     DocenteID INT AUTO_INCREMENT PRIMARY KEY,
     UsuarioID INT UNIQUE,
-    NumeroCuenta VARCHAR(50) UNIQUE NOT NULL,
     CentroRegionalID INT NOT NULL,
     FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
     FOREIGN KEY (CentroRegionalID) REFERENCES CentroRegional(CentroRegionalID)
@@ -137,10 +136,10 @@ CREATE TABLE Notas (
 );
 
 -- Insertar Usuarios
-INSERT INTO Usuario (NombreCompleto, Identidad, Correo, Pass, Telefono) 
+INSERT INTO Usuario (NombreCompleto, Identidad, CorreoPersonal, Pass,NumeroCuenta, Telefono) 
 VALUES 
-('Juan Pérez', '0801199901234', 'juan.perez@gmail.com', 'clave123', '98765432'),
-('María López', '0802199505678', 'maria.lopez@gmail.com', 'pass456', '99887766');
+('Juan Pérez', '0801199901234', 'juan.perez@gmail.com', 'clave123', '2023123456', '98765432'),
+('María López', '0802199505678', 'maria.lopez@gmail.com', 'pass456','2015456789', '99887766');
 
 -- Insertar Centros Regionales
 INSERT INTO CentroRegional (NombreCentro, Ubicacion, Telefono, Correo) 
@@ -160,11 +159,11 @@ VALUES
 ('Administración de Empresas', 4, 'Licenciatura', 2, 1);
 
 -- Insertar Estudiantes
-INSERT INTO Estudiante (UsuarioID, CarreraID, CentroRegionalID, CorreoInstitucional, NumeroCuenta) 
+INSERT INTO Estudiante (UsuarioID, CarreraID, CentroRegionalID, CorreoInstitucional) 
 VALUES 
-(1, 1, 1, 'juan.perez@uniteg.hn', '2023123456');
+(1, 1, 1, 'juan.perez@uniteg.hn');
 
 -- Insertar Docentes
-INSERT INTO Docente (UsuarioID, NumeroCuenta, CentroRegionalID) 
+INSERT INTO Docente (UsuarioID, CentroRegionalID) 
 VALUES 
-(2, 'DOC-456789', 1);
+(2, 1);
