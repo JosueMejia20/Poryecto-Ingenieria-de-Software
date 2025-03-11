@@ -18,6 +18,13 @@
                 <a href="landing.php">
                     <input type="button" value="Regresar">
                 </a>
+
+                <p>Para iniciar su proceso de admisión, 
+                    por favor seleccione este botón.
+                </p>
+                <a href="admisiones.html">
+                    <input type="button" value="Formulario de Admisiones">
+                </a>
             </div>
         </div>
         <dive class="form-informacion">

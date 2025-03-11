@@ -34,7 +34,7 @@
                         <a class="nav-link" href="#docentes">Docentes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#admisiones">Admisiones</a>
+                        <a class="nav-link" href="formulario_admisiones.php">Admisiones</a>
                     </li>
                     <li>
                         <a class="nav-link" href="login.php">Acceder</a>
@@ -84,7 +84,7 @@
         <div class="container text-center">
             <h2>Admisiones</h2>
             <p>Infórmate sobre los requisitos de admisión, fechas y cómo puedes iniciar tu proceso de ingreso a la UNAH.</p>
-            <a href="#" class="btn btn-primary">Iniciar Admisión</a>
+            <a href="formulario_admisiones.php" class="btn btn-primary">Iniciar Admisión</a>
         </div>
     </section>
 
