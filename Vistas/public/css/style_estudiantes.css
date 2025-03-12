@@ -1,46 +1,53 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     background-image: url(https://blogs.unah.edu.hn/assets/dircom/blog/2601/Ingreso-a-la-UNAH.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    backdrop-filter: blur(0.5rem);
+    backdrop-filter: blur(5px);
 }
-
 
 .navbar {
     background-color: #002146 !important;
-
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
-.conjunto_informacion{
-    padding-top: 10%;
+.conjunto_informacion {
+    padding-top: 70px;
+    width: 90%;
+    margin: auto;
 }
 
 .informacion {
-    width: 90%;
-    height: 60%;
-    margin: auto;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
 }
 
-.info{
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide en dos columnas */
-    gap: 10px; 
-    height: 90%;
+.info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.info div{
+    flex: 1;
 }
 
 .info p {
@@ -48,13 +55,23 @@ body{
     font-size: 16px;
 }
 
-#Table{
-    width: 90%;
-    margin: auto;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #002146;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+#Table {
+    width: 100%;
     border-radius: 8px;
     background-color: #ffffff;
     border-collapse: collapse;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 th, td {
@@ -69,53 +86,26 @@ th {
     font-size: 16px;
 }
 
-img{
-
-    float: left;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-right: 20px;
-    border: 3px solid #002146;
-}
-
 footer {
-    background-color: #002146; /* Color de fondo */
+    background-color: #002146;
     color: white;
     text-align: center;
     padding: 1rem;
     margin-top: auto;
 }
 
-/*Responsiv*/
-@media screen and (max-width:750px){
-    html{
-        font-size: 11px;
+@media screen and (max-width: 768px) {
+    .informacion {
+        text-align: center;
+        gap: 20px;
     }
 }
 
 @media screen and (max-width:580px){
-    html{
-        font-size: 9px;
-    }
-
-    .container-form{
-        height: auto;
+    .informacion {
         flex-direction: column;
-    }
-
-    .informacion{
-        width: 100%;
-        padding: 20px;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        border-bottom-left-radius: 0;
-    }
-
-    .form-informacion{
-        width: 100%;
-        padding: 20px;
-        border-bottom-left-radius: 20px;
-        border-top-right-radius: 0px;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
     }
 }
