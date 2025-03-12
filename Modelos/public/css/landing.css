@@ -1,12 +1,10 @@
 /* Estilos generales */
 
-
 body {
     font-family: Arial, sans-serif;
     position: relative; 
     background: none; 
 }
-
 
 body::before {
     content: "";
@@ -51,11 +49,11 @@ body::before {
 
 section:not(.hero) {
     padding: 3rem 0;
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
-    border-radius: 10px; /* Bordes redondeados */
-    margin: 20px auto; /* Espaciado entre secciones */
-    width: 90%; /* Ajusta el ancho para que no ocupe todo */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px; 
+    margin: 20px auto; 
+    width: 90%; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
 }
 section.bg-light {
     background-color: #f8f9fa;
@@ -72,7 +70,7 @@ p {
 }
 
 .btn-primary {
-    background-color: #dfd21d;
+    background-color: #e8b621;
     border: none;
     padding: 0.5rem 2rem;
     font-size: 1.1rem;
@@ -80,7 +78,7 @@ p {
 }
 
 .btn-primary:hover {
-    background-color: #dfd21d;
+    background-color: #e8bd21;
 }
 
 /* Pie de página */
@@ -88,4 +86,35 @@ footer {
     background-color: #002146 !important;
     color: white;
     padding: 1.5rem;
+}
+
+
+.accordion-button {
+    background-color: #55d2ed; 
+    color: #002146; 
+    border: 1px solid 55d2ed; ; 
+}
+
+.accordion-button:hover {
+    background-color: #55d2ed ; 
+    color: white; 
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #55d2ed; 
+    color: white; 
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-body {
+    background-color: #cfeefa; 
+    color: #002146; 
+}
+
+
+.accordion-item {
+    margin-bottom: 1rem;
 }
