@@ -1,0 +1,121 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url(https://blogs.unah.edu.hn/assets/dircom/blog/2601/Ingreso-a-la-UNAH.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(0.5rem);
+}
+
+
+.navbar {
+    background-color: #002146 !important;
+
+}
+
+.conjunto_informacion{
+    padding-top: 10%;
+}
+
+.informacion {
+    width: 90%;
+    height: 60%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.info{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide en dos columnas */
+    gap: 10px; 
+    height: 90%;
+}
+
+.info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+#Table{
+    width: 90%;
+    margin: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #ffffff;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ebcc02;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #002146;
+    color: white;
+    font-size: 16px;
+}
+
+img{
+
+    float: left;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 3px solid #002146;
+}
+
+footer {
+    background-color: #002146; /* Color de fondo */
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+/*Responsiv*/
+@media screen and (max-width:750px){
+    html{
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width:580px){
+    html{
+        font-size: 9px;
+    }
+
+    .container-form{
+        height: auto;
+        flex-direction: column;
+    }
+
+    .informacion{
+        width: 100%;
+        padding: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-informacion{
+        width: 100%;
+        padding: 20px;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 0px;
+    }
+}
