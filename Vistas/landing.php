@@ -7,23 +7,25 @@
    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   
-    <link rel="stylesheet" href="/Poryecto-Ingenieria-de-Software/Modelos/public/css/landing.css">
+     <link rel="stylesheet" href="/Poryecto-Ingenieria-de-Software/Modelos/public/css/landing.css">
+    
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="/Poryecto-Ingenieria-de-Software/Modelos/public/images/puma.png" alt="Logo UNAH" style="height: 40px; margin-right: 10px;">
-                Portal UNAH 
-            </a>
+    
+        <a class="navbar-brand" href="#">
+            <img src="/Poryecto-Ingenieria-de-Software/Modelos/public/images/puma.png" alt="Logo UNAH" style="height: 40px; margin-right: 10px;">
+            UNAH Registro
+        </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#matricula">Matricula</a>
+                        <a class="nav-link" href="#matricula">Matrícula</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#biblioteca">Biblioteca Virtual</a>
@@ -45,7 +47,7 @@
     <section class="hero bg-primary text-white text-center py-5">
         <div class="container">
             <h1 class="display-4">Bienvenido al Sistema de Registro UNAH</h1>
-            <p class="lead">Accede a los servicios de matrícula, biblioteca, docentes y admisiones de forma fácil y rápida.</p>
+            <p class="lead">Accede a los servicios de matrícula, biblioteca, docentes y admisiones.</p>
             <a href="#matricula" class="btn btn-light btn-lg">Comienza Aquí</a>
         </div>
     </section>
@@ -53,7 +55,7 @@
     <section id="matricula" class="py-5 ">
         <div class="container text-center">
             <h2>Matricula</h2>
-            <p>Realiza tu matrícula de manera rápida y sencilla. Consulta tu historial académico y registra tus cursos.</p>
+            <p>Realiza tu matrícula, consulta tu historial académico y registra tus cursos.</p>
             
             <!-- Accordion para Matrícula -->
             <div class="accordion" id="accordionMatricula">

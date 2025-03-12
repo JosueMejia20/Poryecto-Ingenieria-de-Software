@@ -102,6 +102,7 @@ body{
 }
 
 .form-informacion-child h2{
+    padding-top: 25px;
     color: black;
     font-size: 2rem;
 }
@@ -151,6 +152,11 @@ body{
 
 .form inputt[type="submit"]:hover{
     background-color: transparent;
+}
+
+img{
+    float: left;
+    width: 48%;
 }
 
 /*Responsiv*/

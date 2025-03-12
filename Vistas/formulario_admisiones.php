@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admisiones</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Poryecto-Ingenieria-de-Software/Modelos/public/css/style_formulario_admisiones.css">
+    <link rel="stylesheet" href="public/css/style_formulario_admisiones.css">
 </head>
 <body>
 
@@ -45,7 +45,7 @@
                     <h2>Se Parte de la UNAH</h2>
                     <p> 
                     </p>
-                    <a href="incio.html">
+                    <a href="landing.php">
                         <input type="button" value="Regresar">
                     </a>
                 </div>
@@ -90,7 +90,7 @@
     
     
     
-    <footer class="bg-primary text-white text-center py-4">
+    <footer class="text-white text-center py-4">
         <p>&copy; 2025 Universidad Nacional Autónoma de Honduras | Todos los derechos reservados</p>
     </footer>
     

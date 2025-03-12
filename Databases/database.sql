@@ -4,52 +4,55 @@ USE BD_UNI;
 
 -- Tabla Usuario
 CREATE TABLE Usuario (
-    UsuarioID INT AUTO_INCREMENT PRIMARY KEY,
+    UsuarioID SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     NombreCompleto VARCHAR(50) NOT NULL,
-    Identidad VARCHAR(20) UNIQUE NOT NULL,
-    CorreoPersonal VARCHAR(255) UNIQUE NOT NULL,
+    Identidad CHAR(13) UNIQUE NOT NULL,
+    Correo VARCHAR(100) UNIQUE NOT NULL,
     Pass VARCHAR(50) NOT NULL,
-    NumeroCuenta VARCHAR(50) UNIQUE NOT NULL,
-    Telefono VARCHAR(20)
+    Telefono CHAR(8),
+    INDEX idx_usuario_correo (Correo)
 );
 
 -- Tabla Facultad
 CREATE TABLE Facultad (
-    FacultadID INT AUTO_INCREMENT PRIMARY KEY,
-    NombreFacultad VARCHAR(255) NOT NULL,
-    Decano INT,
-    FOREIGN KEY (Decano) REFERENCES Usuario(UsuarioID)
+    FacultadID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    NombreFacultad VARCHAR(100) NOT NULL,
+    Decano SMALLINT UNSIGNED,
+    FOREIGN KEY (Decano) REFERENCES Usuario(UsuarioID),
+    INDEX idx_facultad_nombre (NombreFacultad)
 );
 
 -- Tabla Centro Regional
 CREATE TABLE CentroRegional (
-    CentroRegionalID INT AUTO_INCREMENT PRIMARY KEY,
-    NombreCentro VARCHAR(255) NOT NULL,
-    Ubicacion TEXT NOT NULL,
-    Telefono VARCHAR(20),
-    Correo VARCHAR(255)
+    CentroRegionalID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    NombreCentro VARCHAR(100) NOT NULL,
+    Ubicacion VARCHAR(255) NOT NULL,
+    Telefono CHAR(8),
+    Correo VARCHAR(100),
+    INDEX idx_centroregional_nombre (NombreCentro)
 );
 
 -- Tabla Carrera
 CREATE TABLE Carrera (
-    CarreraID INT AUTO_INCREMENT PRIMARY KEY,
-    NombreCarrera VARCHAR(255) NOT NULL,
-    Duracion INT NOT NULL,
-    Nivel VARCHAR(50) NOT NULL,
-    FacultadID INT NOT NULL,
-    CentroRegionalID INT NOT NULL,
+    CarreraID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    NombreCarrera VARCHAR(100) NOT NULL,
+    Duracion TINYINT UNSIGNED NOT NULL,
+    Nivel ENUM('Licenciatura', 'Ingeniería', 'Técnico') NOT NULL,
+    FacultadID TINYINT UNSIGNED NOT NULL,
+    CentroRegionalID TINYINT UNSIGNED NOT NULL,
     FOREIGN KEY (FacultadID) REFERENCES Facultad(FacultadID),
-    FOREIGN KEY (CentroRegionalID) REFERENCES CentroRegional(CentroRegionalID)
+    FOREIGN KEY (CentroRegionalID) REFERENCES CentroRegional(CentroRegionalID),
+    INDEX idx_carrera_nombre (NombreCarrera)
 );
 
 -- Tabla Admisión
 CREATE TABLE Admision (
-    AdmisionID INT AUTO_INCREMENT PRIMARY KEY,
-    UsuarioID INT UNIQUE,
+    AdmisionID SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    UsuarioID SMALLINT UNSIGNED UNIQUE,
     FechaSolicitud DATE NOT NULL,
     Estado ENUM('Pendiente', 'Aprobada', 'Rechazada') NOT NULL,
-    CarreraID INT NOT NULL,
-    CarreraAlternativaID INT,
+    CarreraID TINYINT UNSIGNED NOT NULL,
+    CarreraAlternativaID TINYINT UNSIGNED,
     CertificadoSecundaria TEXT,
     Observaciones TEXT,
     FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
@@ -59,11 +62,12 @@ CREATE TABLE Admision (
 
 -- Tabla Estudiante
 CREATE TABLE Estudiante (
-    EstudianteID INT AUTO_INCREMENT PRIMARY KEY,
-    UsuarioID INT UNIQUE,
-    CarreraID INT NOT NULL,
-    CentroRegionalID INT NOT NULL,
-    CorreoInstitucional VARCHAR(255) UNIQUE NOT NULL,
+    EstudianteID SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    UsuarioID SMALLINT UNSIGNED UNIQUE,
+    CarreraID TINYINT UNSIGNED NOT NULL,
+    CentroRegionalID TINYINT UNSIGNED NOT NULL,
+    CorreoInstitucional VARCHAR(100) UNIQUE NOT NULL,
+    NumeroCuenta CHAR(10) UNIQUE NOT NULL,
     FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
     FOREIGN KEY (CarreraID) REFERENCES Carrera(CarreraID),
     FOREIGN KEY (CentroRegionalID) REFERENCES CentroRegional(CentroRegionalID)
@@ -71,54 +75,56 @@ CREATE TABLE Estudiante (
 
 -- Tabla Docente
 CREATE TABLE Docente (
-    DocenteID INT AUTO_INCREMENT PRIMARY KEY,
-    UsuarioID INT UNIQUE,
-    CentroRegionalID INT NOT NULL,
+    DocenteID SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    UsuarioID SMALLINT UNSIGNED UNIQUE,
+    NumeroCuenta CHAR(10) UNIQUE NOT NULL,
+    CentroRegionalID TINYINT UNSIGNED NOT NULL,
     FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
     FOREIGN KEY (CentroRegionalID) REFERENCES CentroRegional(CentroRegionalID)
 );
 
 -- Tabla Coordinador
 CREATE TABLE Coordinador (
-    CoordinadorID INT AUTO_INCREMENT PRIMARY KEY,
-    DocenteID INT UNIQUE,
-    DepartamentoID INT NOT NULL,
+    CoordinadorID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    DocenteID SMALLINT UNSIGNED UNIQUE,
+    DepartamentoID TINYINT UNSIGNED NOT NULL,
     FOREIGN KEY (DocenteID) REFERENCES Docente(DocenteID)
 );
 
--- Tabla Categoria Libro
+-- Tabla Categoría Libro
 CREATE TABLE CategoriaLibro (
-    CategoriaID INT AUTO_INCREMENT PRIMARY KEY,
-    Nombre VARCHAR(100) NOT NULL
+    CategoriaID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL,
+    INDEX idx_categoria_nombre (Nombre)
 );
 
 -- Tabla Biblioteca
 CREATE TABLE Biblioteca (
-    LibroID INT AUTO_INCREMENT PRIMARY KEY,
-    Titulo VARCHAR(255) NOT NULL,
-    Autor VARCHAR(255) NOT NULL,
-    CategoriaLibroID INT NOT NULL,
+    LibroID SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Titulo VARCHAR(150) NOT NULL,
+    Autor VARCHAR(100) NOT NULL,
+    CategoriaLibroID TINYINT UNSIGNED NOT NULL,
     ArchivoPDF TEXT,
     FOREIGN KEY (CategoriaLibroID) REFERENCES CategoriaLibro(CategoriaID)
 );
 
 -- Tabla Sección
 CREATE TABLE Seccion (
-    SeccionID INT AUTO_INCREMENT PRIMARY KEY,
-    Asignatura VARCHAR(255) NOT NULL,
-    DocenteID INT NOT NULL,
-    PeriodoAcademico VARCHAR(50) NOT NULL,
-    Aula VARCHAR(50),
-    Horario VARCHAR(100),
-    CupoMaximo INT NOT NULL,
+    SeccionID SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Asignatura VARCHAR(100) NOT NULL,
+    DocenteID SMALLINT UNSIGNED NOT NULL,
+    PeriodoAcademico VARCHAR(20) NOT NULL,
+    Aula VARCHAR(20),
+    Horario VARCHAR(50),
+    CupoMaximo TINYINT UNSIGNED NOT NULL,
     FOREIGN KEY (DocenteID) REFERENCES Docente(DocenteID)
 );
 
 -- Tabla Matrícula
 CREATE TABLE Matricula (
-    MatriculaID INT AUTO_INCREMENT PRIMARY KEY,
-    EstudianteID INT NOT NULL,
-    SeccionID INT NOT NULL,
+    MatriculaID SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    EstudianteID SMALLINT UNSIGNED NOT NULL,
+    SeccionID SMALLINT UNSIGNED NOT NULL,
     FechaInscripcion DATE NOT NULL,
     EstadoMatricula ENUM('Activo', 'Inactivo') NOT NULL,
     FOREIGN KEY (EstudianteID) REFERENCES Estudiante(EstudianteID),
@@ -127,43 +133,53 @@ CREATE TABLE Matricula (
 
 -- Tabla Notas
 CREATE TABLE Notas (
-    NotaID INT AUTO_INCREMENT PRIMARY KEY,
-    EstudianteID INT NOT NULL,
-    SeccionID INT NOT NULL,
-    Calificacion DECIMAL(5,2) NOT NULL,
+    NotaID SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    EstudianteID SMALLINT UNSIGNED NOT NULL,
+    SeccionID SMALLINT UNSIGNED NOT NULL,
+    Calificacion DECIMAL(4,2) NOT NULL,
     FOREIGN KEY (EstudianteID) REFERENCES Estudiante(EstudianteID),
     FOREIGN KEY (SeccionID) REFERENCES Seccion(SeccionID)
 );
 
--- Insertar Usuarios
-INSERT INTO Usuario (NombreCompleto, Identidad, CorreoPersonal, Pass,NumeroCuenta, Telefono) 
-VALUES 
-('Juan Pérez', '0801199901234', 'juan.perez@gmail.com', 'clave123', '2023123456', '98765432'),
-('María López', '0802199505678', 'maria.lopez@gmail.com', 'pass456','2015456789', '99887766');
+-- Inserts para Usuario
+INSERT INTO Usuario (NombreCompleto, Identidad, Correo, Pass, Telefono) VALUES
+('Juan Pérez', '0801199901234', 'juan.perez@gmail.com', 'clave123', '98765432'),
+('María López', '0802199505678', 'maria.lopez@gmail.com', 'pass456', '99887766');
 
--- Insertar Centros Regionales
-INSERT INTO CentroRegional (NombreCentro, Ubicacion, Telefono, Correo) 
-VALUES 
+-- Inserts para Centro Regional
+INSERT INTO CentroRegional (NombreCentro, Ubicacion, Telefono, Correo) VALUES
 ('Centro Regional Tegucigalpa', 'Tegucigalpa, Honduras', '22334455', 'info@uniteg.hn');
 
--- Insertar Facultades
-INSERT INTO Facultad (NombreFacultad, Decano) 
-VALUES 
+-- Inserts para Facultad
+INSERT INTO Facultad (NombreFacultad, Decano) VALUES
 ('Facultad de Ingeniería', 2),
 ('Facultad de Ciencias Económicas', NULL);
 
--- Insertar Carreras
-INSERT INTO Carrera (NombreCarrera, Duracion, Nivel, FacultadID, CentroRegionalID) 
-VALUES 
-('Ingeniería en Sistemas', 5, 'Licenciatura', 1, 1),
+-- Inserts para Carrera
+INSERT INTO Carrera (NombreCarrera, Duracion, Nivel, FacultadID, CentroRegionalID) VALUES
+('Ingeniería en Sistemas', 5, 'Ingeniería', 1, 1),
 ('Administración de Empresas', 4, 'Licenciatura', 2, 1);
 
--- Insertar Estudiantes
-INSERT INTO Estudiante (UsuarioID, CarreraID, CentroRegionalID, CorreoInstitucional) 
-VALUES 
-(1, 1, 1, 'juan.perez@uniteg.hn');
+-- Inserts para Estudiante
+INSERT INTO Estudiante (UsuarioID, CarreraID, CentroRegionalID, CorreoInstitucional, NumeroCuenta) VALUES
+(1, 1, 1, 'juan.perez@uniteg.hn', '2023123456'),
+(2, 2, 1, 'maria.lopez@uniteg.hn', '2023127890');
 
--- Insertar Docentes
-INSERT INTO Docente (UsuarioID, CentroRegionalID) 
-VALUES 
-(2, 1);
+-- Inserts para Docente
+INSERT INTO Docente (UsuarioID, NumeroCuenta, CentroRegionalID) VALUES
+(2, 'DOC-456789', 1);
+
+-- Inserts para Sección
+INSERT INTO Seccion (Asignatura, DocenteID, PeriodoAcademico, Aula, Horario, CupoMaximo) VALUES
+('Programación I', 1, '2024-1', 'A101', '08:00-10:00', 30),
+('Contabilidad ', 1, '2024-1', 'B201', '10:00-12:00', 25);
+
+-- Inserts para Matrícula
+INSERT INTO Matricula (EstudianteID, SeccionID, FechaInscripcion, EstadoMatricula) VALUES
+(1, 1, '2024-01-15', 'Activo'),
+(2, 2, '2024-01-16', 'Activo');
+
+-- Inserts para Notas
+INSERT INTO Notas (EstudianteID, SeccionID, Calificacion) VALUES
+(1, 1, 89.50),
+(2, 2, 92.75);
