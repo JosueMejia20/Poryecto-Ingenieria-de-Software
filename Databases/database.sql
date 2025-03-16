@@ -9,7 +9,9 @@ CREATE TABLE Usuario (
     Identidad CHAR(13) UNIQUE NOT NULL,
     Correo VARCHAR(100) UNIQUE NOT NULL,
     Pass VARCHAR(50) NOT NULL,
+    Rol ENUM('Estudiante', 'Docente') NOT NULL,
     Telefono CHAR(8),
+    Es_Revisor TINYINT(1) NOT NULL,
     INDEX idx_usuario_correo (Correo)
 );
 
@@ -151,14 +153,39 @@ INSERT INTO CentroRegional (NombreCentro, Ubicacion, Telefono, Correo) VALUES
 ('Centro Regional Tegucigalpa', 'Tegucigalpa, Honduras', '22334455', 'info@uniteg.hn');
 
 -- Inserts para Facultad
+-- Inserts para Facultad
 INSERT INTO Facultad (NombreFacultad, Decano) VALUES
 ('Facultad de Ingeniería', 2),
-('Facultad de Ciencias Económicas', NULL);
+('Facultad de Ciencias Económicas', NULL),
+('Facultad de Ciencias de la Salud', NULL),
+('Facultad de Ciencias Sociales', NULL),
+('Facultad de Humanidades y Artes', NULL),
+('Facultad de Ciencias Jurídicas', NULL),
+('Facultad de Ciencias Exactas y Naturales', NULL);
 
 -- Inserts para Carrera
 INSERT INTO Carrera (NombreCarrera, Duracion, Nivel, FacultadID, CentroRegionalID) VALUES
+-- Ingeniería
 ('Ingeniería en Sistemas', 5, 'Ingeniería', 1, 1),
-('Administración de Empresas', 4, 'Licenciatura', 2, 1);
+('Ingeniería Civil', 5, 'Ingeniería', 1, 1),
+('Ingeniería Industrial', 5, 'Ingeniería', 1, 1),
+('Ingeniería Mecánica', 5, 'Ingeniería', 1, 1),
+('Ingeniería Eléctrica', 5, 'Ingeniería', 1, 1),
+('Ingeniería Electrónica', 5, 'Ingeniería', 1, 1),
+('Administración de Empresas', 4, 'Licenciatura', 2, 1),
+('Contaduría Pública', 4, 'Licenciatura', 2, 1),
+('Economía', 4, 'Licenciatura', 2, 1),
+('Medicina', 7, 'Licenciatura', 3, 1),
+('Odontología', 5, 'Licenciatura', 3, 1),
+('Enfermería', 5, 'Licenciatura', 3, 1),
+('Psicología', 4, 'Licenciatura', 4, 1),
+('Trabajo Social', 4, 'Licenciatura', 4, 1),
+('Ciencias de la Educación', 4, 'Licenciatura', 5, 1),
+('Artes Plásticas', 4, 'Licenciatura', 5, 1),
+('Derecho', 5, 'Licenciatura', 6, 1),
+('Matemáticas', 4, 'Licenciatura', 7, 1),
+('Biología', 4, 'Licenciatura', 7, 1),
+('Física', 4, 'Licenciatura', 7, 1).
 
 -- Inserts para Estudiante
 INSERT INTO Estudiante (UsuarioID, CarreraID, CentroRegionalID, CorreoInstitucional, NumeroCuenta) VALUES
